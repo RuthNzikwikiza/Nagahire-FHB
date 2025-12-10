@@ -1,0 +1,1 @@
+web: gunicorn nagahire_backend.wsgi:application
