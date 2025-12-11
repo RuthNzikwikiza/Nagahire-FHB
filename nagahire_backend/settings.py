@@ -15,7 +15,11 @@ SECRET_KEY = 'django-insecure-d-ik@*neu=o5g-q+wpelw^qbc6+)zm^201y1f9@if93q82k3i1
 DEBUG = False  # Change to False for deployment
 
 # Update with your deployed domain or Render URL
-ALLOWED_HOSTS = ['your-backend.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = [
+    'nagahire-fhb.onrender.com',  # your Render domain
+    'localhost',
+    '127.0.0.1',
+]
 
 # Application definition
 INSTALLED_APPS = [
