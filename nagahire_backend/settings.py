@@ -29,6 +29,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary',
+    'cloudinary_storage',
     'corsheaders',
     'rest_framework',
     'shop',
@@ -102,3 +104,14 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')  # For deployment
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+# Cloudinary configuration
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dmewkrxzk',
+    'API_KEY': '821886382863267',
+    'API_SECRET': '*********************************'
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+# Media URLs
+MEDIA_URL = '/media/'
