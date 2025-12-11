@@ -1,22 +1,13 @@
-"""
-Django settings for nagahire_backend project.
-"""
-
 from pathlib import Path
 import os
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-d-ik@*neu=o5g-q+wpelw^qbc6+)zm^201y1f9@if93q82k3i1'
+DEBUG = False  # Keep False for production
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False  # Change to False for deployment
-
-# Update with your deployed domain or Render URL
 ALLOWED_HOSTS = [
-    'nagahire-fhb.onrender.com',  # your Render domain
+    'nagahire-fhb.onrender.com',
     'localhost',
     '127.0.0.1',
 ]
@@ -29,17 +20,21 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # Third-party
     'cloudinary',
     'cloudinary_storage',
     'corsheaders',
     'rest_framework',
+
+    # Your apps
     'shop',
 ]
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',  
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # Serve static files
+    'corsheaders.middleware.CorsMiddleware',       # CORS
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -50,7 +45,7 @@ MIDDLEWARE = [
 
 # Allow frontend domain
 CORS_ALLOWED_ORIGINS = [
-    "https://your-frontend.onrender.com",
+    "https://your-frontend-domain.onrender.com",  # Replace with actual URL
 ]
 
 ROOT_URLCONF = 'nagahire_backend.urls'
@@ -95,24 +90,22 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
-# Static files (CSS, JavaScript)
+# Static files
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # For deployment
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-# Media files (images)
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')  # For deployment
 
-# Default primary key field type
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-# Cloudinary configuration
+# Media files
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
+
+# Cloudinary for production media
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': 'dmewkrxzk',
     'API_KEY': '821886382863267',
-    'API_SECRET': '*********************************'
+    'API_SECRET': 'YOUR_API_SECRET',  # Hide secret with env variable
 }
-
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
-# Media URLs
-MEDIA_URL = '/media/'
+# Default primary key field type
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
