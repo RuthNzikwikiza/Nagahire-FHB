@@ -6,20 +6,20 @@ import cloudinary
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME', 'dmewkrxzk'),
     'API_KEY': os.environ.get('CLOUDINARY_API_KEY', '821886382863267'),
-    'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET', ''),
+    'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET', '**********************'),
 }
 
 # Configure cloudinary module directly
 cloudinary.config(
     cloud_name=os.environ.get('CLOUDINARY_CLOUD_NAME', 'dmewkrxzk'),
     api_key=os.environ.get('CLOUDINARY_API_KEY', '821886382863267'),
-    api_secret=os.environ.get('CLOUDINARY_API_SECRET', ''),
+    api_secret=os.environ.get('CLOUDINARY_API_SECRET', '**********************'),
 )
 
 # Use Cloudinary for media files in production
 if not DEBUG:
     DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-```
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
@@ -142,7 +142,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME', 'dmewkrxzk'),
     'API_KEY': os.environ.get('CLOUDINARY_API_KEY', '821886382863267'),
-    'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET', ''),
+    'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET', '**********************'),
 }
 
 # Use Cloudinary for media files in production
