@@ -115,7 +115,6 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 # -------------------------------------------------
 # MEDIA / CLOUDINARY
 # -------------------------------------------------
-# ALWAYS load from environment - NO default empty strings!
 CLOUDINARY_STORAGE = {
     "CLOUD_NAME": os.environ["CLOUDINARY_CLOUD_NAME"],
     "API_KEY": os.environ["CLOUDINARY_API_KEY"],
@@ -134,7 +133,7 @@ if DEBUG:
     MEDIA_ROOT = BASE_DIR / "mediafiles"
 else:
     DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
-   MEDIA_URL = f"https://res.cloudinary.com/{CLOUDINARY_STORAGE['CLOUD_NAME']}/image/upload/"
+    MEDIA_URL = f"https://res.cloudinary.com/{CLOUDINARY_STORAGE['CLOUD_NAME']}/image/upload/"
 
 # -------------------------------------------------
 # CORS CONFIG
